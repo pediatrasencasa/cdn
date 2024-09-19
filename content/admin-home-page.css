@@ -1,0 +1,175 @@
+﻿.my-account-content {
+    font-size: 14px;
+    float: left;
+    /*width: 768px;*/
+    background: #f6f6f6;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    zoom: 1;
+}
+
+.statistics-box {
+    /*width: 766px;*/
+    overflow: hidden;
+    padding-bottom: 1px;
+    position: relative;
+    left: -8px;
+}
+
+    .statistics-box .my-account-box {
+        height: 132px;
+        width: 244px;
+        padding: 15px;
+        float: left;
+        margin: 13px 10px 10px 30px;
+        position: relative;
+        -webkit-transition: 0.1s ease-in-out;
+        -moz-transition: 0.1s ease-in-out;
+        -o-transition: 0.1s ease-in-out;
+        -ms-transition: 0.1s ease-in-out;
+        transition: 0.1s ease-in-out;
+        zoom: 1;
+        margin-top: 10px;
+        /*padding: 13px 10px 10px 38px;*/
+        background-color: #fff;
+        -webkit-box-shadow: 0 1px 1px #e8e8e8;
+        box-shadow: 0 1px 1px #e8e8e8;
+    }
+
+        .statistics-box .my-account-box:hover {
+            text-decoration: none;
+            -webkit-box-shadow: 1px 1px 8px #a2a2a2;
+            box-shadow: 1px 1px 8px #a2a2a2;
+        }
+
+            .statistics-box .my-account-box:hover p {
+                text-decoration: none;
+            }
+
+        .statistics-box .my-account-box:before {
+            background-image: url("//cdn.pediatrasencasa.com/content/img/dashboard-49c4b08c9fbf8f08ac645fcd04e564d5.png");
+            background-position: -298px 0;
+            width: 9px;
+            height: 9px;
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .statistics-box .my-account-box p {
+            font-size: 14px;
+            color: #999;
+            margin: 5px 0 8px 0;
+            text-align: right;
+        }
+
+        .statistics-box .my-account-box strong {
+            color: #6990ad;
+            font-size: 36px;
+            float: right;
+            font-family: ProximaNovaRgRegular;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-style: normal;
+            line-height: 1;
+        }
+
+        .statistics-box .my-account-box span {
+            display: block;
+            width: 232px;
+            float: right;
+            text-align: right;
+            color: #999;
+            font-size: 11px;
+        }
+
+    .statistics-box .active-classified p:before {
+        background-image: url("//cdn.pediatrasencasa.com/content/img/dashboard-49c4b08c9fbf8f08ac645fcd04e564d5.png");
+        background-position: -54px -173px;
+        width: 57px;
+        height: 45px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .statistics-box .favorite-classified p:before {
+        background-image: url("//cdn.pediatrasencasa.com/content/img/dashboard-49c4b08c9fbf8f08ac645fcd04e564d5.png");
+        background-position: 0 -218px;
+        width: 54px;
+        height: 51px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+    }
+
+    .statistics-box .messages p:before {
+        background-image: url("//cdn.pediatrasencasa.com/content/img/dashboard-49c4b08c9fbf8f08ac645fcd04e564d5.png");
+        background-position: -207px -50px;
+        width: 50px;
+        height: 32px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        position: absolute;
+        top: 25px;
+        left: 20px;
+    }
+
+    .statistics-box .view-count p:before {
+        background-image: url("//cdn.pediatrasencasa.com/content/img/dashboard-49c4b08c9fbf8f08ac645fcd04e564d5.png");
+        background-position: -164px -82px;
+        width: 43px;
+        height: 43px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        position: absolute;
+        top: 15px;
+        left: 20px;
+    }
+
+    .statistics-box .doping-view-count p:before {
+        background-image: url("//cdn.pediatrasencasa.com/content/img/dashboard-49c4b08c9fbf8f08ac645fcd04e564d5.png");
+        background-position: -257px -9px;
+        width: 41px;
+        height: 41px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    .statistics-box .active-classified-last-month p:before {
+        background-image: url("//cdn.pediatrasencasa.com/content/img/dashboard-49c4b08c9fbf8f08ac645fcd04e564d5.png");
+        background-position: -111px -125px;
+        width: 53px;
+        height: 48px;
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+.my-account-box:after {
+    clear: both;
+}
+
+.my-account-box:before, .my-account-box:after {
+    content: "";
+    display: table;
+}

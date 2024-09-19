@@ -1,0 +1,33 @@
+﻿#preloaderKDZ {
+    display: none !important;
+}
+
+.feature .icon div {
+    display: inline-block;
+    overflow: hidden;
+    width: 110px;
+    height: 110px;
+    top: 13.5%;
+    left: 13.5%;
+    position: absolute;
+    background: url('//res.cloudinary.com/pnc/image/upload/v1547009810/images/icons.png') no-repeat;
+}
+
+.contact-details .adress .icon div,
+.contact-details .phone .icon div,
+.contact-details .email .icon div {
+    display: inline-block;
+    overflow: hidden;
+    width: 63px;
+    height: 63px;
+    top: 50%;
+    left: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    position: absolute;
+    background: url('//res.cloudinary.com/pnc/image/upload/v1547009810/images/icons.png') no-repeat;
+}
+
+.jumbotron.jumbotron-1 {
+    background: url('//res.cloudinary.com/pnc/image/upload/v1546848511/images/jumbotron-home-1.jpg') center 100% !important;
+}

@@ -1,0 +1,99 @@
+﻿.text-danger, .field-validation-error {
+    color: #e00002 !important;
+}
+
+.field-validation-error {
+    padding-left: 16px !important;
+}
+
+.validation-summary-errors {
+    color: #e00002 !important;
+    margin-left: 10px !important;
+    font-size: 16px !important;
+}
+
+.panels.pricing .panel .panel-heading {
+    width: 170px;
+    height: 170px;
+}
+
+    .panels.pricing .panel .panel-heading h2 {
+        margin: 60px auto 10px;
+        font-size: 24px;
+        line-height: normal !important;
+    }
+
+.panel-heading p {
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+}
+
+button.submit i.fa {
+    float: right;
+    margin-right: 12px;
+    line-height: 24px;
+    font-size: 24px;
+}
+
+.ui-autocomplete-loading {
+    background: url('//cdn.pediatrasencasa.com/content/img/ui-anim_basic_16x16.gif') no-repeat right center;
+    background-position-x: 98%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+
+.paddingTop50 {
+    padding-top: 50px;
+}
+
+.paddingButton50 {
+    padding-bottom: 50px;
+}
+
+.paddingTop30 {
+    padding-top: 30px;
+}
+
+.paddingButton10 {
+    padding-bottom: 10px;
+}
+
+.paddingTop10 {
+    padding-top: 10px;
+}
+
+.paddingButton30 {
+    padding-bottom: 30px;
+}
+
+
+.info-block2 p {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    color: #ffffff;
+}
