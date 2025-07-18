@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
     - name: Checkout
-
+    - uses: actions/checkout@v4
+    
     - name: Run the action
       uses: potatoqualitee/mssqlsuite@v1.8
       with:
