@@ -10,12 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    
+    - uses: actions/checkout@v4    
     - name: Run the action
     - uses: potatoqualitee/mssqlsuite@v1.8
       with:
         install: sqlclient
-
     - name: Run sqlclient
     - run: sqlcmd -S ${{ secrets.DB_HOST }} -U ${{ secrets.DB_USER }} -P ${{ secrets.DB_PASSWORD }} -d ${{ secrets.DB_DATABASE }} -Q "SELECT @@version;" -C
