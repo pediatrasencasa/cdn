@@ -58,15 +58,18 @@ function Get-Data {
                        
             $row = $ds.Tables[0].Rows[0];
 
-            $jsonResult = @( [Stats]::new(
+            $result = [Stats]::new(
                 $row["clients"],
                 $row["beneficiaries"],
                 $row["consults"],
                 $row["diagnostics"]
-            ));
-           
+            );
+
+            $myArray = [System.Collections.ArrayList]@()
+            $myArray.Add($result);
+            
             # Convert to json
-            return $jsonResult | ConvertTo-Json -Compress;
+            return $myArray | ConvertTo-Json -Compress;
         }
         catch [Exception]
         {
