@@ -24,8 +24,6 @@ Function Get-Data {
 
         try
         {
-            $appSettings = (Get-RsConfigInternalApiData);
-
             $scon.ConnectionString = $ConnectionString;
             $cmd.Connection = $scon;
             $cmd.CommandTimeout = 30;
