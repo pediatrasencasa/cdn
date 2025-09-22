@@ -14,6 +14,17 @@ class Stats {
     [int]$beneficiaries
     [int]$consults
     [int]$diagnostics
+    Stats (
+        [int]$clients,
+        [int]$beneficiaries,
+        [int]$consults,
+        [int]$diagnostics
+    ) {
+        $this.clients = $clients
+        $this.beneficiaries = $beneficiaries
+        $this.consults = $consults
+        $this.diagnostics = $diagnostics
+    }
 }
 
 function Get-Data {
@@ -44,14 +55,15 @@ function Get-Data {
 
             # Fill the DataSet with the result
             $da.Fill($ds) | Out-Null
-            $jsonResult = [Stats]::new();
-            
-            foreach ($row in $ds.Tables[0].Rows) {
-                foreach ($col in $ds.Tables[0].Columns) {
-                    $columnName = $col.ColumnName;
-                    $jsonResult[$columnName] = $row[$columnName];
-                }
-            }
+                       
+            $row = $ds.Tables[0].Rows[0];
+
+            $jsonResult = [Stats]::new(
+                $row["clients"],
+                $row["beneficiaries"],
+                $row["consults"],
+                $row["diagnostics"]
+            );
            
             # Convert to json
             return $jsonResult | ConvertTo-Json -Compress;
