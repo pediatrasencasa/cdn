@@ -10,9 +10,9 @@ param (
 )
 
 class Stats {
-    [int]$clients,
-    [int]$beneficiaries,
-    [int]$consults,
+    [int]$clients
+    [int]$beneficiaries
+    [int]$consults
     [int]$diagnostics
 }
 
