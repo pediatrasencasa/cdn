@@ -14,4 +14,4 @@ jobs:
     
     - name: Execute PowerShell Script
       run: |
-        ./path/to/your/script.ps1 -Instance ${{ secrets.DB_INSTANCE }} -DB_HOST ${{ secrets.DB_DATABASE }} -UID ${{ secrets.DB_USER }} -Password ${{ secrets.DB_PASSWORD }}
+        ./script.ps1 -Instance ${{ secrets.DB_INSTANCE }} -DB_HOST ${{ secrets.DB_DATABASE }} -UID ${{ secrets.DB_USER }} -Password ${{ secrets.DB_PASSWORD }}
