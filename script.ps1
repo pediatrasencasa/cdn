@@ -89,7 +89,7 @@ $ConnectionString = "Server='$Instance';Database='$DbName';User Id='$UID';Passwo
 
 $dataResult = (Get-Data -ConnectionString $ConnectionString);
 
-Write-Output ("["+ $dataResult +"]")
+Write-Output ($dataResult)
 
 # Special GitHub Actions command to set output
-"["+ $dataResult +"]" | Out-File -FilePath $env:GITHUB_OUTPUT
+$dataResult | Out-File -FilePath $env:GITHUB_OUTPUT
