@@ -89,6 +89,6 @@ $ConnectionString = "Server='$Instance';Database='$DbName';User Id='$UID';Passwo
 
 $dataResult = (Get-Data -ConnectionString $ConnectionString);
 
-Write-Output ($dataResult)
+Write-Output ("["+ $dataResult +"]")
 
-Set-Content -Path "./data/statistics.min.json" -Value "["+ $dataResult +"]"
+# Set-Content -Path "./data/statistics.min.json" -Value "["+ $dataResult +"]"
