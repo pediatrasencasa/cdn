@@ -26,7 +26,7 @@ jobs:
           
     - name: Update file with JSON data
       run: |
-        echo "${{ fromJson(steps.get-data.outputs.data) }}" > data/statistics.min.json
+        echo "${{ steps.get-data.outputs.data }}" > data/statistics.min.json
           
     - name: Commit and push changes
       run: |
