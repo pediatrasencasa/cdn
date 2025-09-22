@@ -1,8 +1,9 @@
 name: Update Data
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   build:
@@ -26,9 +27,15 @@ jobs:
           
     - name: Update file with JSON data
       run: |
-        echo "${{ steps.get-data.outputs.data }}" > data/statistics.min.json
+        echo ${{ steps.get-data.outputs.data }} > data/statistics.min.json
+        
+    - name: Check for changes
+      id: git-check
+      run: |
+        git diff --exit-code data/statistics.min.json || echo "changes=true" >> $GITHUB_OUTPUT
           
     - name: Commit and push changes
+      if: steps.git-check.outputs.changes == 'true'
       run: |
         git config --global user.name 'GitHub Actions Bot'
         git config --global user.email 'actions@github.com'
