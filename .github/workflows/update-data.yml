@@ -28,6 +28,7 @@ jobs:
     - name: Update file with JSON data
       run: |
         echo ${{ steps.get-data.outputs.data }} > data/statistics.min.json
+        jq . data/statistics.min.json > temp.json && mv temp.json data/statistics.min.json
         
     - name: Check for changes
       id: git-check
