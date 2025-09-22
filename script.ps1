@@ -37,11 +37,17 @@ Function Get-Data {
 
             # Fill the DataSet with the result
             $da.Fill($ds) | Out-Null
-
+            $jsonResult = {};
+            
+            foreach ($row in $ds.Tables[0].Rows) {
+                foreach ($col in $ds.Tables[0].Columns) {
+                    $columnName = $col.ColumnName;
+                    $jsonResult[$columnName] = $row[$columnName];
+                }
+            }
+           
             # Convert to json
-            $jsonResult = $ds.Tables[0] | ConvertTo-Json -Compress
-
-            return $jsonResult;
+            return $jsonResult | ConvertTo-Json -Compress;
         }
         catch [Exception]
         {
