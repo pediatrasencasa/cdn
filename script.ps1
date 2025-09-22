@@ -91,4 +91,5 @@ $dataResult = (Get-Data -ConnectionString $ConnectionString);
 
 Write-Output ("["+ $dataResult +"]")
 
-# Set-Content -Path "./data/statistics.min.json" -Value "["+ $dataResult +"]"
+# Special GitHub Actions command to set output
+"["+ $dataResult +"]" | Out-File -FilePath $env:GITHUB_OUTPUT
