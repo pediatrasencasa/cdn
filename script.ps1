@@ -9,11 +9,18 @@ param (
     [string]$Password
 )
 
-Function Get-Data {
-    Param(
+class Stats {
+    [int]$clients,
+    [int]$beneficiaries,
+    [int]$consults,
+    [int]$diagnostics
+}
+
+function Get-Data {
+    param(
         [Parameter(Mandatory=$true)][string]$ConnectionString
     )
-    Process
+    process
     {
         $scon = New-Object System.Data.SqlClient.SqlConnection;
         $cmd = New-Object System.Data.SqlClient.SqlCommand;
@@ -37,7 +44,7 @@ Function Get-Data {
 
             # Fill the DataSet with the result
             $da.Fill($ds) | Out-Null
-            $jsonResult = {};
+            $jsonResult = [Stats]::new();
             
             foreach ($row in $ds.Tables[0].Rows) {
                 foreach ($col in $ds.Tables[0].Columns) {
