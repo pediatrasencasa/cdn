@@ -65,8 +65,7 @@ function Get-Data {
                 $row["diagnostics"]
             );
 
-            $myArray = [System.Collections.ArrayList]@()
-            $myArray.Add($result);
+            $myArray = @($result);
             
             # Convert to json
             return $myArray | ConvertTo-Json -Compress;
