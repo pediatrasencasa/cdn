@@ -9,28 +9,61 @@ param (
     [string]$Password
 )
 
-# Set location if necessary
-# Set-Location "Path to the directory which contains your SQL Script ..."
+Function Get-Data {
+    Param(
+        [Parameter(Mandatory=$true)][string]$ConnectionString
+    )
+    Process
+    {
+        $scon = New-Object System.Data.SqlClient.SqlConnection;
+        $cmd = New-Object System.Data.SqlClient.SqlCommand;
+        $da = New-Object System.Data.SqlClient.SqlDataAdapter;
+        $ds = New-Object System.Data.DataSet;
 
-$logs = @()
-$ConnectionString = "Server='$Instance';Database='$DbName';User Id='$UID';Password='$Password';Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;"
-$SqlFiles = Get-ChildItem -Path . -File -Filter *.sql
+        $storedProcedure = "[dbo].[sp_website_statistics]";
 
-for ($i = 0; $i -lt $SqlFiles.Count; $i++) {
-    $SqlFile = $SqlFiles[$i]
-    try {
-        Invoke-Sqlcmd -ConnectionString $ConnectionString -InputFile $SqlFile -ErrorAction 'Stop'
-        $LogMessage = ($SqlFile.Name + " Executed Successfully.")
+        try
+        {
+            $appSettings = (Get-RsConfigInternalApiData);
+
+            $scon.ConnectionString = $ConnectionString;
+            $cmd.Connection = $scon;
+            $cmd.CommandTimeout = 30;
+            $cmd.CommandType = [System.Data.CommandType]::StoredProcedure;
+            $cmd.CommandText = $storedProcedure;
+
+            $da.SelectCommand = $cmd
+
+            # Open connect 
+            $scon.Open();
+
+            # Fill the DataSet with the result
+            $da.Fill($ds) | Out-Null
+
+            # Convert to json
+            $jsonResult = $ds.Tables[0] | ConvertTo-Json -Compress
+
+            return $jsonResult;
+        }
+        catch [Exception]
+        {
+           Write-Output ("Error occured while calling $storedProcedure") $_.Exception.Message;
+        }
+        finally
+        {
+            $cmd.Dispose();
+
+            if ($scon.State -eq [System.Data.ConnectionState]::Open){
+                $scon.Close();
+                $scon.Dispose();
+            }
+        }
     }
-    catch {
-        $LogMessage = "Error executing $($SqlFile.Name): $_"
-    }
-    $row = [PSCustomObject]@{
-        "File" = $SqlFile.Name
-        "Date" = (Get-Date -UFormat "%d-%m-%Y")
-        "Log"  = $LogMessage
-    }
-    $logs += $row  
 }
 
-Write-Output ($logs | Format-Table -AutoSize -Wrap | Out-String)
+
+$ConnectionString = "Server='$Instance';Database='$DbName';User Id='$UID';Password='$Password';Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;"
+
+$dataResult = (Get-Data -ConnectionString $ConnectionString);
+
+Write-Output ($dataResult)
