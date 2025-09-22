@@ -87,9 +87,9 @@ function Get-Data {
 
 $ConnectionString = "Server='$Instance';Database='$DbName';User Id='$UID';Password='$Password';Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;"
 
-$dataResult = (Get-Data -ConnectionString $ConnectionString);
+$dataResult = "[" + (Get-Data -ConnectionString $ConnectionString) + "]";
 
 Write-Output ($dataResult)
 
-# Special GitHub Actions command to set output
-$dataResult | Out-File -FilePath $env:GITHUB_OUTPUT
+# Format for GitHub Actions output
+"data=$dataResult" >> $env:GITHUB_OUTPUT
