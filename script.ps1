@@ -64,11 +64,9 @@ function Get-Data {
                 $row["consults"],
                 $row["diagnostics"]
             );
-
-            $myArray = @($result);
             
             # Convert to json
-            return $myArray | ConvertTo-Json -Compress;
+            return $result | ConvertTo-Json -Compress;
         }
         catch [Exception]
         {
@@ -92,3 +90,5 @@ $ConnectionString = "Server='$Instance';Database='$DbName';User Id='$UID';Passwo
 $dataResult = (Get-Data -ConnectionString $ConnectionString);
 
 Write-Output ($dataResult)
+
+Set-Content -Path "./data/statistics.min.json" -Value "["+ $dataResult +"]"
