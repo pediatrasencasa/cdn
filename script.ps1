@@ -58,12 +58,12 @@ function Get-Data {
                        
             $row = $ds.Tables[0].Rows[0];
 
-            $jsonResult = [Stats]::new(
+            $jsonResult = @( [Stats]::new(
                 $row["clients"],
                 $row["beneficiaries"],
                 $row["consults"],
                 $row["diagnostics"]
-            );
+            ));
            
             # Convert to json
             return $jsonResult | ConvertTo-Json -Compress;
